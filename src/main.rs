@@ -9,9 +9,13 @@ fn main() {
     // For more information, see documentation on `read()`
     let reading = dht.read().unwrap();
 
+    let temperature_c = reading.temperature();
+    let temperature_f = temperature_c * 9.0 / 5.0 + 32.0;
+
     println!(
-        "Temperature {} °C, Humidity {}%RH",
-        reading.temperature(),
+        "Temperature: {:.2} °C / {:.2} °F, Humidity: {}%RH",
+        temperature_c,
+        temperature_f,
         reading.humidity()
     );
 }
