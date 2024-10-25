@@ -6,7 +6,7 @@ use std::{thread::sleep, time::Duration};
 fn main() -> anyhow::Result<()> {
     let mut gpiochip = Chip::new("/dev/gpiochip0")?;
     let line = gpiochip.get_line(4)?;
-    let handle = line.request(LineRequestFlags::INPUT | LineRequestFlags::OUTPUT, 1, "dht-sensor")?;
+    let handle = line.request(LineRequestFlags::INPUT | LineRequestFlags::OUTPUT, 0, "dht-sensor")?;
     let pin = CdevPin::new(handle)?;
     let mut sensor = Dht11::new(NoopInterruptControl, Delay, pin);
 
