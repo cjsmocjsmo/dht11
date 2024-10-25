@@ -1,21 +1,17 @@
-use dht_embedded::{Dht11, DhtSensor, NoopInterruptControl};
-use gpio_cdev::{Chip, LineRequestFlags};
-use linux_embedded_hal::{CdevPin, Delay};
-use std::{thread::sleep, time::Duration};
+use dht_mmap_rust::{Dht, DhtType};
 
-fn main() -> anyhow::Result<()> {
-    let mut gpiochip = Chip::new("/dev/gpiochip0")?;
-    let line = gpiochip.get_line(4)?;
-    let handle = line.request(LineRequestFlags::INPUT | LineRequestFlags::OUTPUT, 0, "dht-sensor")?;
-    let pin = CdevPin::new(handle)?;
-    let mut sensor = Dht11::new(NoopInterruptControl, Delay, pin);
+fn main() {
+    // The sensor is a DHT11 connected on pin 23
+    let mut dht = Dht::new(DhtType::Dht11, 23).unwrap();
 
-    loop {
-        match sensor.read() {
-            Ok(reading) => println!("{}°C, {}% RH", reading.temperature(), reading.humidity()),
-            Err(e) => eprintln!("Error: {}", e),
-        }
+    // Important: DHT sensor reads fail sometimes. In an actual program, if a read fails you should retry multiple times until
+    // the read succeeds.
+    // For more information, see documentation on `read()`
+    let reading = dht.read().unwrap();
 
-        sleep(Duration::from_millis(2100));
-    }
+    println!(
+        "Temperature {} °C, Humidity {}%RH",
+        reading.temperature(),
+        reading.humidity()
+    );
 }

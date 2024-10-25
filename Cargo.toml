@@ -4,8 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-anyhow = "1.0.91"
-dht-embedded = "0.4.0"
-gpio-cdev = "0.6.0"
-linux-embedded-hal = "0.4.0"
+dht-mmap-rust = "0.1.0"
+
 
