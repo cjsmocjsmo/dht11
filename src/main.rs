@@ -13,7 +13,7 @@ fn main() {
     let temperature_f = temperature_c * 9.0 / 5.0 + 32.0;
 
     println!(
-        "Temperature: {:.2} C / {:.2} F, Humidity: {}%RH",
+        "Temperature: \n\t{:.2} C \n\t {:.2} F\n\t, Humidity: {}%",
         temperature_c,
         temperature_f,
         reading.humidity()
