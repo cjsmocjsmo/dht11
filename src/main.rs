@@ -18,4 +18,11 @@ fn main() {
         temperature_f,
         reading.humidity()
     );
+
+    println!(
+        "{}, {}",
+        reading.temperature(),
+        reading.humidity()
+    );
 }
+
