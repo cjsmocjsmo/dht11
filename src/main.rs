@@ -40,7 +40,7 @@ fn main() {
         .about("Reads temperature and humidity from a DHT11 sensor")
         .arg(
             Arg::new("humidity")
-                .short('h')
+                .short('H')
                 .long("humidity")
                 .help("Prints the humidity"),
         )
