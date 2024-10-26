@@ -24,5 +24,14 @@ fn main() {
         reading.temperature(),
         reading.humidity()
     );
+
+    let response = json!({
+        "temperature": reading.temperature(),
+        "humidity": reading.humidity()
+    });
+
+    println!("{}", response);
+
+    return response;
 }
 
