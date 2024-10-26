@@ -1,4 +1,5 @@
 use dht_mmap_rust::{Dht, DhtType};
+use serde_json::json;
 
 fn main() {
     // The sensor is a DHT11 connected on pin 23
@@ -31,7 +32,5 @@ fn main() {
     });
 
     println!("{}", response);
-
-    return response;
 }
 
