@@ -40,21 +40,24 @@ fn main() {
         .about("Reads temperature and humidity from a DHT11 sensor")
         .arg(
             Arg::new("humidity")
-                .short('x')
+                .short('m')
                 .long("humidity")
-                .help("Prints the humidity"),
+                .help("Prints the humidity")
+                .num_args(0),
         )
         .arg(
             Arg::new("celsius")
                 .short('c')
                 .long("celsius")
-                .help("Prints the temperature in Celsius"),
+                .help("Prints the temperature in Celsius")
+                .num_args(0),
         )
         .arg(
             Arg::new("fahrenheit")
                 .short('f')
                 .long("fahrenheit")
-                .help("Prints the temperature in Fahrenheit"),
+                .help("Prints the temperature in Fahrenheit")
+                .num_args(0),
         )
         .get_matches();
 
