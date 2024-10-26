@@ -28,7 +28,7 @@
 //     println!("{}", response);
 // }
 
-use clap::{Command, Arg};
+use clap::{Arg, Command};
 use dht_mmap_rust::{Dht, DhtType};
 use serde_json::json;
 
@@ -40,7 +40,7 @@ fn main() {
         .about("Reads temperature and humidity from a DHT11 sensor")
         .arg(
             Arg::new("humidity")
-                .short('H')
+                .short('x')
                 .long("humidity")
                 .help("Prints the humidity"),
         )
